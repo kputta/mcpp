@@ -1,5 +1,5 @@
 #include <algorithm>
-#include "../ciphers/reverse.hpp"
+#include "reverse.hpp"
 
 using namespace std;
 namespace crypto {
