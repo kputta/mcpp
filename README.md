@@ -1,38 +1,48 @@
-# cpp-crypto
-c++ implementation of problems defined in https://github.com/arahimian/py-crypto 
+# mcpp: modern c++ projects
+
 
 ## Setup
 - Style Guide:
   - Clang-format Supports 5 or more style guides, LLVM(default), Google, Chromium, Mozilla, WebKit etc and in this project Google style guide is enabled while writing the code, although they have some very opiniated things about column width, templates and exceptions. 
-  - Also we create a .clang-format file 
-	  - clang-format -style=llvm -dump-config > .clang-format)) 
-  - Additionally as code is written, it is suggested to enable google-c-style in emacs, it is strongly opiniated on templates and exception usages, this project uses google style guide (https://raw.githubusercontent.com/google/styleguide/gh-pages/google-c-style.el)
+  - Also we create a .clang-format file in top-directory and a pre-commit hook is installed to run clang-format command on all changed cpp and hpp files.
+	  
+	  `clang-format -style=llvm -dump-config > .clang-format`
 
 - Compiling and Linking:
-  Make tool uses Makefile to build executables
-  Makefile is a simply DAG describing necessary and all compilations & linkings
-  
-  g++ main.cpp
-  g++ -c main.cpp; g++ main.o
-  g++ main.o -lm (libm)
-	Clang offers more advantages for the construction of large projects while GCC is always advantageous in performance optimization.
-	- GCC: 
-	- Clang(LLVM): Clang is a C, C++, Objective-C, Objective-C++ compiler that is compiled in C++ based on LLVM and released under the Apache 2.0 license.
-   
-- Libraries: 
-
-- Makefile:
-  Rule consists for 3 things, (target, pre-reqs, receipe)
-  
+	- CMake: CMake is cross-platform project build tool kit, essentially it creates a MakeFile.
+	- Makefile is a simply DAG describing necessary pre-requistics and receipts to build set of targets.
+	- CMakeLists.txt are written to use 10.2.0 g++/gcc versions with CXX20 standard, (using -std=c++20).
+ - Structure:
+	 - Each project has set of sub-directories under main project directory, example: 
+	    cpp-project is the main project directory and under that ciphers and ciphers-code are project sub-directories.
+	- Aim is to make static libraries out of this projects and combine with any external libraries (mostly common across all projects) to create an executable target, define in apps folder.
+	- Additionally a test directory is also parent folder which sub-directories containing proeject based tests.
+ 
 ## Projects
-- crypto-cpp: 
-	- objectives:
-		- provide the medium to exchange messages between two parties.
-		- define api to access 
-		- include multiple algorithms to perform encrypt & decrypt
+- crypto-cpp: c++ implementation of problems defined in [[https://github.com/arahimian/py-crypto]]
+	- Iteration 1:
+		- Built intial framework under cpp-crypto/ciphers
+		- Added reverse algorithm as first cipher.
+	 
+## Build Apps:
+- crypto-cpp:
+	-  reverse-cipher:
+		-	It uses external gflag library which is included as submodule in this project (external folder).
+		-	It uses one internal static library 
+			-	`cmake -H. -Bbuild`
+				-	Uses defined CMakeLists.txt and create build directory with relevant CMakeFiles, lib, lib and a MakeFile
+			-	 `cd build; make reverse-cipher`
+				-	 Compiles, links and creates following targets in build directory:
+					-	 external/gflags/libgflags_nothreads.a
+					-	 lib/libCiphers.a
+					-	 bin/reverse-cipher
 
-	
+## Usage:
+- crypto-cpp:
+	- reverse-cipher:
+		- `./bin/reverse-cipher  --help`
+			- `-d` (convert ciphertext to plaintext) type: bool default: false
+			- `-e` (convert plaintext to ciphertext) type: bool default: false
+			- `-t` (plain/cipher-text to encrypt/decrypt) type: string default: ""
+		- `./bin/reverse-cipher -e -t Fsdgsdg`
 
-## Usage
-
-## 
