@@ -1,15 +1,20 @@
+#pragma once
+
 #include <string>
 
-using namespace std;
+// too much to be using namespace std;
+// TODO: key defn & requirement is not standard
 
 namespace crypto {
 class Cipher {
  public:
-  Cipher(const string& key) : key(key) {}
-  virtual string encrypt(const string& plaintext) = 0;
-  virtual string decrypt(const string& ciphertext) = 0;
+  Cipher(const std::string& key) : key(key) {}
+  // descructor
+  virtual ~Cipher() {};
+  virtual std::string encrypt(const std::string& plaintext) = 0;
+  virtual std::string decrypt(const std::string& ciphertext) = 0;
 
  protected:
-  string key;
+  std::string key;
 };
 }  // namespace crypto

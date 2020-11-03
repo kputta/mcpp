@@ -5,6 +5,8 @@
 using namespace std;
 namespace crypto {
 
+// TODO: check string view (read-only)
+// TODO: copy + reverse together
 string Reverse::encrypt(const string& plaintext) {
   string ciphertext(plaintext);
   reverse(ciphertext.begin(), ciphertext.end());

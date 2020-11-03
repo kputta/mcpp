@@ -31,7 +31,7 @@ project(cpp-crypto VERSION 1.0)
 add_subdirectory(external/gflags)
 add_subdirectory(cpp-crypto)
 add_executable(reverse-cipher "apps/reverse-cipher.cpp")
-target_include_directories(reverse-cipher PUBLIC cpp-crypto/ciphers)
+target_include_directories(reverse-cipher PUBLIC cpp-crypto)
 target_link_libraries(reverse-cipher Ciphers gflags::gflags)
 set_target_properties(reverse-cipher
   PROPERTIES
