@@ -3,8 +3,9 @@ c++ implementation of problems defined in https://github.com/arahimian/py-crypto
 
 ## Setup
 - Style Guide:
-  - Clang-format Supports 5 or more? style guides, LLVM(default), Google, Chromium, Mozilla, WebKit
-  - Add pre-commit hook or pre-save function in emacs or set hot keys
+  - Clang-format Supports 5 or more style guides, LLVM(default), Google, Chromium, Mozilla, WebKit etc and in this project Google style guide is enabled while writing the code, although they have some very opiniated things about column width, templates and exceptions. 
+  - Also we create a .clang-format file 
+	  - clang-format -style=llvm -dump-config > .clang-format)) 
   - Additionally as code is written, it is suggested to enable google-c-style in emacs, it is strongly opiniated on templates and exception usages, this project uses google style guide (https://raw.githubusercontent.com/google/styleguide/gh-pages/google-c-style.el)
 
 - Compiling and Linking:

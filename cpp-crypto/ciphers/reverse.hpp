@@ -9,4 +9,4 @@ class Reverse : Cipher {
   string encrypt(const string& plaintext);
   string decrypt(const string& ciphertext);
 };
-}
+}  // namespace crypto

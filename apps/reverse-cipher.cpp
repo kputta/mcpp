@@ -1,5 +1,7 @@
-#include <iostream>
 #include <gflags/gflags.h>
+
+#include <iostream>
+
 #include "reverse.hpp"
 
 DEFINE_string(t, "", "plain/cipher-text to encrypt/decrypt");
