@@ -1,6 +1,6 @@
-#include "reverse.hpp"
-
 #include <algorithm>
+
+#include "reverse.hpp"
 
 using namespace std;
 namespace crypto {
