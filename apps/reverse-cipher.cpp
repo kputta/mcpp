@@ -1,7 +1,9 @@
 // expanded header path
-#include "ciphers/reverse.hpp"
 #include <gflags/gflags.h>
+
 #include <iostream>
+
+#include "ciphers/reverse.hpp"
 
 DEFINE_string(t, "", "plain/cipher-text to encrypt/decrypt");
 DEFINE_bool(e, false, "convert plaintext to ciphertext");

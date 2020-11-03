@@ -10,7 +10,7 @@ class Cipher {
  public:
   Cipher(const std::string& key) : key(key) {}
   // descructor
-  virtual ~Cipher() {};
+  virtual ~Cipher(){};
   virtual std::string encrypt(const std::string& plaintext) = 0;
   virtual std::string decrypt(const std::string& ciphertext) = 0;
 
