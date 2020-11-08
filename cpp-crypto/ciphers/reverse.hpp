@@ -5,7 +5,7 @@
 namespace crypto {
 class Reverse : Cipher {
  public:
-  Reverse(const std::string& key) : Cipher(key) {}
+  Reverse() : Cipher() {}
   std::string encrypt(const std::string& plaintext);
   std::string decrypt(const std::string& ciphertext);
 };
