@@ -2,8 +2,6 @@
 
 #include <string>
 
-// TODO: key defn & requirement is not standard
-
 namespace crypto {
 class Cipher {
  public:
