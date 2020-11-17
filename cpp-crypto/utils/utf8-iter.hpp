@@ -25,7 +25,7 @@ class Utf8Iterator {
   bool operator!=(std::string::iterator rhs) const;
   bool operator!=(std::string::const_iterator rhs) const;
 
-private:
+ private:
   std::string::const_iterator iterator_;
 };
-}
+}  // namespace utils

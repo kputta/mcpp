@@ -1,8 +1,9 @@
 #include <gflags/gflags.h>
 
+#include <bitset>
 #include <iostream>
 #include <sstream>
-#include <bitset>
+
 #include "ciphers/reverse.hpp"
 
 DEFINE_string(t, "", "plain/cipher-text to encrypt/decrypt");
@@ -27,16 +28,21 @@ int main(int argc, char** argv) {
 
   if (FLAGS_v) {
     std::cout << "input: \n";
-    for(unsigned int i = 0; i < FLAGS_t.size(); i++) {
-      std::cout << FLAGS_t[i] << " " << sizeof(FLAGS_t[i]) << " " << int(FLAGS_t[i]) << " " << std::bitset<8>(FLAGS_t[i]) << " ";
+    for (unsigned int i = 0; i < FLAGS_t.size(); i++) {
+      std::cout << FLAGS_t[i] << " " << sizeof(FLAGS_t[i]) << " "
+                << int(FLAGS_t[i]) << " " << std::bitset<8>(FLAGS_t[i]) << " ";
     }
     std::cout << "\nconverted ciphertext bytes: \n";
-    for(unsigned int i = 0; i < ciphertext.size(); i++) {
-      std::cout << ciphertext[i] << " " << sizeof(ciphertext[i]) << " " << int(ciphertext[i]) << " " << std::bitset<8>(ciphertext[i]) << " ";
+    for (unsigned int i = 0; i < ciphertext.size(); i++) {
+      std::cout << ciphertext[i] << " " << sizeof(ciphertext[i]) << " "
+                << int(ciphertext[i]) << " " << std::bitset<8>(ciphertext[i])
+                << " ";
     }
     std::cout << "\nretrieved plaintext bytes: \n";
-    for(unsigned int i = 0; i < plaintext.size(); i++) {
-      std::cout << plaintext[i] << " " << sizeof(plaintext[i]) << " " << int(plaintext[i]) << " " << std::bitset<8>(plaintext[i]) << " ";
+    for (unsigned int i = 0; i < plaintext.size(); i++) {
+      std::cout << plaintext[i] << " " << sizeof(plaintext[i]) << " "
+                << int(plaintext[i]) << " " << std::bitset<8>(plaintext[i])
+                << " ";
     }
     std::cout << "\n";
   }

@@ -73,4 +73,4 @@ inline std::string utf8chr(int cp) {
   }
   return std::string(c);
 }
-}
+}  // namespace utils
