@@ -1,31 +1,21 @@
 #include "ciphers/reverse.hpp"
-
 #include <algorithm>
 
 namespace crypto {
-
-/*
-  Note: Reverse only works for ASCII set for now.
-  std::reverse_copy invoked with standard std::string iterators (as in
-  this example) will simply reverse the code units of a string and not
-  necessarily the characters (depending on the encoding). For example a UTF-8
-  encoded string that contains multibyte characters would not be reversed
-  correctly by this function as the multibyte sequences would also be reversed
-  making them invalid.
-*/
-
 std::string Reverse::encrypt(std::string_view plaintext) {
-  std::string ciphertext;
-  ciphertext.resize(plaintext.size());
-  std::reverse_copy(plaintext.begin(), plaintext.end(), ciphertext.begin());
-  return ciphertext;
+  std::u32string plaintext32{conv_.from_bytes(plaintext.begin())};
+  std::u32string ciphertext32;
+  ciphertext32.resize(plaintext32.size());
+  std::reverse_copy(plaintext32.begin(), plaintext32.end(), ciphertext32.begin());
+  return conv_.to_bytes(ciphertext32);
 }
 
 std::string Reverse::decrypt(std::string_view ciphertext) {
-  std::string plaintext;
-  plaintext.resize(ciphertext.size());
-  std::reverse_copy(ciphertext.begin(), ciphertext.end(), plaintext.begin());
-  return plaintext;
+  std::u32string ciphertext32{conv_.from_bytes(ciphertext.begin())};
+  std::u32string plaintext32;
+  plaintext32.resize(ciphertext32.size());
+  std::reverse_copy(ciphertext32.begin(), ciphertext32.end(), plaintext32.begin());
+  return conv_.to_bytes(plaintext32);
 }
 
 }  // namespace crypto
