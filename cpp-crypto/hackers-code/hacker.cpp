@@ -2,7 +2,8 @@
 
 namespace crypto {
 
-void load_words(Dictionary dictionary, std::map<int, std::vector<std::string>>& container) {
+void load_words(Dictionary dictionary,
+                std::map<int, std::vector<std::string>>& container) {
   if (dictionary == Dictionary::kGoogle1000English) {
     utils::load_gte(container);
   } else if (dictionary == Dictionary::kNorvig10000English) {
@@ -12,4 +13,4 @@ void load_words(Dictionary dictionary, std::map<int, std::vector<std::string>>& 
   }
 }
 
-}
+}  // namespace crypto

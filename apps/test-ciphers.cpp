@@ -4,8 +4,8 @@
 #include <iostream>
 #include <sstream>
 
-#include "ciphers/reverse.hpp"
 #include "ciphers/caesar.hpp"
+#include "ciphers/reverse.hpp"
 
 DEFINE_string(t, "Hello World! 🤯", "plain/cipher-text to encrypt/decrypt");
 DEFINE_bool(v, false, "print details");
@@ -19,7 +19,8 @@ void test_reverse(std::string_view text, bool verbose) {
   std::string plaintext = decrypt.decrypt(ciphertext);
 
   if (text.compare(plaintext) == 0) {
-    std::cout << "\nReverse-Cipher: Success (ciphertext: " << ciphertext << ")\n";
+    std::cout << "\nReverse-Cipher: Success (ciphertext: " << ciphertext
+              << ")\n";
   } else {
     std::cout << "\nReverse-Cipher: Failed" << std::endl;
   }
@@ -34,7 +35,7 @@ void test_reverse(std::string_view text, bool verbose) {
       std::cout << plaintext[i] << " " << std::bitset<8>(plaintext[i]) << " ";
     }
     std::cout << "\n";
-  }  
+  }
 }
 
 void test_caesar(std::string_view text, bool verbose, int key) {
@@ -45,7 +46,8 @@ void test_caesar(std::string_view text, bool verbose, int key) {
   std::string plaintext = decrypt.decrypt(ciphertext);
 
   if (text.compare(plaintext) == 0) {
-    std::cout << "\nCaesar-Cipher: Success (ciphertext: " << ciphertext << ")\n";
+    std::cout << "\nCaesar-Cipher: Success (ciphertext: " << ciphertext
+              << ")\n";
   } else {
     std::cout << "\nCaesar-Cipher: Failed" << std::endl;
   }
@@ -61,7 +63,6 @@ void test_caesar(std::string_view text, bool verbose, int key) {
     }
     std::cout << "\n";
   }
-
 }
 
 int main(int argc, char** argv) {
