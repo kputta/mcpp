@@ -17,14 +17,17 @@ namespace crypto {
 */
 class Caesar : Cipher {
  public:
-  Caesar(int key) : Cipher(), key_(key) {}
+  /*
+    typedef is not pretty if alias declarations are templated so using `using` 
+   */
+  using CaesarKey = int32_t;
+  Caesar(CaesarKey key) : Cipher(), key_(key) {}
   std::string encrypt(std::string_view plaintext);
   std::string decrypt(std::string_view ciphertext);
-  void set_key(int key) { key_ = key; }
-  static constexpr int kMaxKey = 1114111;
-
+  void set_key(CaesarKey key) { key_ = key; }
+  static constexpr CaesarKey kMaxKey = 1114111;
  private:
-  int key_;
-  std::wstring_convert<std::codecvt_utf8<char32_t>, char32_t> code_convertor_;
+  CaesarKey key_;
+  std::wstring_convert<std::codecvt_utf8<WideChar>, WideChar> code_convertor_;
 };
 }  // namespace crypto

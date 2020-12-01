@@ -6,25 +6,27 @@
 #include <boost/algorithm/string/split.hpp>  // Include for boost::split
 #include <locale>
 
-#include "ciphers/caesar.hpp"
-
 namespace crypto {
 
 CaesarHacker::CaesarHacker(Dictionary d) {
+#if USE_VECTOR == 0
+  std::cout << "using 1d-vector\n";
+  load_words_uv(d, words_by_length_);
+#elif USE_VECTOR == 1
+  std::cout << "using 2d-vector\n";
   load_words(d, words_by_length_);
-  std::cout << "{" << d << ": ";
-  for (auto const& [key, val] : words_by_length_) {
-    std::cout << key << ": " << val.size() << ", ";
-  }
-  std::cout << "}\n";
+#else
+  std::cout << "using unordered_set\n";
+  load_words_um(d, words_by_length_);
+#endif
 }
 
-int CaesarHacker::hack(std::string_view ciphertext) {
-  int key = -1;
+Caesar::CaesarKey CaesarHacker::hack(std::string_view ciphertext) {
+  Caesar::CaesarKey key = -1;
   unsigned int max_score = 0;
   Caesar decryptor{0};
   std::vector<std::string> words;
-  for (int i = 0; i < Caesar::kMaxKey; i++) {
+  for (Caesar::CaesarKey i = 0; i < Caesar::kMaxKey; i++) {
     unsigned int score = 0;
     decryptor.set_key(i);
     boost::split(words, decryptor.decrypt(ciphertext),

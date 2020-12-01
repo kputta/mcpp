@@ -4,6 +4,7 @@
 #include <iostream>
 #include <map>
 #include <vector>
+#include <unordered_set>
 
 namespace utils {
 
@@ -27,10 +28,17 @@ get_path is defined more than once, and won't allow it.
 - if you declare the function to be static, then no symbol will be exported
  */
 
-std::string_view get_path(std::string_view);
-// https://github.com/first20hours/google-10000-english
-void load_gte(std::map<int, std::vector<std::string>>&);
 // https://norvig.com/ngrams/
+// https://github.com/first20hours/google-10000-english
+std::string_view get_path(std::string_view);
+
+void load_gte(std::map<int, std::vector<std::string>>&);
 void load_tkwf(std::map<int, std::vector<std::string>>&);
+
+void load_gte_um(std::unordered_set<std::string>&);
+void load_tkwf_um(std::unordered_set<std::string>&);
+
+void load_gte_uv(std::vector<std::string>&);
+void load_tkwf_uv(std::vector<std::string>&);
 
 }  // namespace utils

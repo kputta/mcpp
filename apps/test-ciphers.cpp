@@ -30,7 +30,7 @@ void test_reverse(std::string_view text, bool verbose) {
     for (unsigned int i = 0; i < ciphertext.size(); i++) {
       std::cout << ciphertext[i] << " " << std::bitset<8>(ciphertext[i]) << " ";
     }
-    std::cout << "retrieved plaintext bytes: ";
+    std::cout << "\nretrieved plaintext bytes: ";
     for (unsigned int i = 0; i < plaintext.size(); i++) {
       std::cout << plaintext[i] << " " << std::bitset<8>(plaintext[i]) << " ";
     }

@@ -12,6 +12,6 @@ class Reverse : Cipher {
   std::string decrypt(std::string_view ciphertext);
 
  private:
-  std::wstring_convert<std::codecvt_utf8<char32_t>, char32_t> conv_;
+  std::wstring_convert<std::codecvt_utf8<WideChar>, WideChar> conv_;
 };
 }  // namespace crypto
