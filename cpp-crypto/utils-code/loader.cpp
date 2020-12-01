@@ -48,7 +48,8 @@ void load_tkwf_um(std::unordered_set<std::string>& container) {
     size_t pos = 0;
     if ((pos = line.find(delimiter)) != std::string::npos) {
       // construct & copy-construct Vs construct & move Vs construct
-      container.emplace(std::move(boost::algorithm::to_lower_copy(line.substr(0, pos))));
+      container.emplace(
+          std::move(boost::algorithm::to_lower_copy(line.substr(0, pos))));
     }
   }
 }
@@ -71,7 +72,8 @@ void load_tkwf_uv(std::vector<std::string>& container) {
     size_t pos = 0;
     if ((pos = line.find(delimiter)) != std::string::npos) {
       // construct & copy-construct Vs construct & move Vs construct
-      container.emplace_back(std::move(boost::algorithm::to_lower_copy(line.substr(0, pos))));
+      container.emplace_back(
+          std::move(boost::algorithm::to_lower_copy(line.substr(0, pos))));
     }
   }
 }

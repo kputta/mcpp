@@ -24,8 +24,7 @@ void load_words_um(Dictionary dictionary,
   }
 }
 
-void load_words_uv(Dictionary dictionary,
-                   std::vector<std::string>& container) {
+void load_words_uv(Dictionary dictionary, std::vector<std::string>& container) {
   if (dictionary == Dictionary::kGoogle1000English) {
     utils::load_gte_uv(container);
   } else if (dictionary == Dictionary::kNorvig10000English) {

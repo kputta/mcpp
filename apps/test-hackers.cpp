@@ -10,7 +10,6 @@
 DEFINE_string(t, "Hello World! 🤯", "plaintext to test ciphers");
 DEFINE_int32(k, 3, "print details");
 
-
 void try_caesar(std::string_view text, int key) {
   crypto::Caesar::CaesarKey ck{key};
   crypto::Caesar encrypt{ck};
@@ -20,20 +19,18 @@ void try_caesar(std::string_view text, int key) {
   auto start = std::chrono::system_clock::now();
   int key1 = hacker1.hack(ciphertext);
   auto end = std::chrono::system_clock::now();
-  auto elapsed =
-    std::chrono::duration_cast<std::chrono::seconds>(end - start);
-  
+  auto elapsed = std::chrono::duration_cast<std::chrono::seconds>(end - start);
+
   std::cout << elapsed.count() << '\n';
   if (key1 >= 0) {
     std::cout << "Probable key for ceasar cipher is " << key1 << "\n";
   }
-  
+
   crypto::CaesarHacker hacker2{crypto::Dictionary::kNorvig10000English};
   start = std::chrono::system_clock::now();
   int key2 = hacker2.hack(ciphertext);
   end = std::chrono::system_clock::now();
-  elapsed =
-    std::chrono::duration_cast<std::chrono::seconds>(end - start);
+  elapsed = std::chrono::duration_cast<std::chrono::seconds>(end - start);
   std::cout << elapsed.count() << '\n';
   if (key2 >= 0) {
     std::cout << "Probable key for ceasar cipher is " << key2 << "\n";

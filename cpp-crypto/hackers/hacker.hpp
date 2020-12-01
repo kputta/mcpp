@@ -21,12 +21,13 @@ enum class Dictionary {
 // instead of explicity casting
 // following template functions takes enum and returns its value
 // during the complite time, so can be used with templates
-template<typename E>
+template <typename E>
 constexpr auto toUType(E enumerator) noexcept {
   return static_cast<std::underlying_type_t<E>>(enumerator);
 }
 
-// why inline, because defination becomes a symbol in the object file and symbol can only be defined once
+// why inline, because defination becomes a symbol in the object file and symbol
+// can only be defined once
 inline std::ostream& operator<<(std::ostream& out, const Dictionary& value) {
   switch (value) {
     case Dictionary::kGoogle1000English:
@@ -46,7 +47,7 @@ void load_words(Dictionary, std::map<int, std::vector<std::string>>&);
 void load_words_um(Dictionary, std::unordered_set<std::string>&);
 void load_words_uv(Dictionary, std::vector<std::string>&);
 
-template<class CipherKey>
+template <class CipherKey>
 class Hacker {
  public:
   Hacker() {}

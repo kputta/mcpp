@@ -18,7 +18,7 @@ namespace crypto {
 class Caesar : Cipher {
  public:
   /*
-    typedef is not pretty if alias declarations are templated so using `using` 
+    typedef is not pretty if alias declarations are templated so using `using`
    */
   using CaesarKey = int32_t;
   Caesar(CaesarKey key) : Cipher(), key_(key) {}
@@ -26,6 +26,7 @@ class Caesar : Cipher {
   std::string decrypt(std::string_view ciphertext);
   void set_key(CaesarKey key) { key_ = key; }
   static constexpr CaesarKey kMaxKey = 1114111;
+
  private:
   CaesarKey key_;
   std::wstring_convert<std::codecvt_utf8<WideChar>, WideChar> code_convertor_;

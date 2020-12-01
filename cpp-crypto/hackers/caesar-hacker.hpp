@@ -3,8 +3,8 @@
 #include <algorithm>
 #include <vector>
 
-#include "hackers/hacker.hpp"
 #include "ciphers/caesar.hpp"
+#include "hackers/hacker.hpp"
 
 namespace crypto {
 /*
@@ -31,7 +31,8 @@ class CaesarHacker : public Hacker<Caesar::CaesarKey> {
  private:
   bool exists(const std::string& word) {
 #if USE_VECTOR == 0
-    return (std::find(words_by_length_.begin(), words_by_length_.end(), word) != words_by_length_.end());
+    return (std::find(words_by_length_.begin(), words_by_length_.end(), word) !=
+            words_by_length_.end());
 #elif USE_VECTOR == 1
     auto& group = words_by_length_[word.size()];
     return (std::find(group.begin(), group.end(), word) != group.end());
@@ -51,7 +52,7 @@ class CaesarHacker : public Hacker<Caesar::CaesarKey> {
 #if USE_VECTOR == 0
   std::vector<std::string> words_by_length_;
 #elif USE_VECTOR == 1
-  std::map<int, std::vector<std::string>> words_by_length_;
+  std::map<int, std::vector<std::string> > words_by_length_;
 #else
   std::unordered_set<std::string> words_by_length_;
 #endif
