@@ -70,8 +70,10 @@ void test_caesar(std::string_view text, bool verbose, int key) {
 void test_transposition(std::string_view text, bool verbose,
                         std::string key_pair) {
   auto index = key_pair.find(":");
+  auto numrows = std::stoi(key_pair.substr(0, key_pair.size() - index));
+
   crypto::Transposition::TranspositionKey key{
-      std::make_pair(std::stoi(key_pair.substr(0, key_pair.size() - index)),
+      std::make_pair(numrows,
                      key_pair.substr(index + 1, std::string::npos))};
 
   crypto::Transposition encrypt{key};
@@ -81,8 +83,7 @@ void test_transposition(std::string_view text, bool verbose,
   std::string plaintext = decrypt.decrypt(ciphertext);
 
   if (text.compare(plaintext) == 0) {
-    std::cout << "\nTransposition-Cipher: Success (ciphertext: " << ciphertext
-              << ")\n";
+    std::cout << "\nTransposition-Cipher: Success (ciphertext: " << ciphertext << ")\n";
   } else {
     std::cout << "\nTransposition-Cipher: Failed" << std::endl;
   }

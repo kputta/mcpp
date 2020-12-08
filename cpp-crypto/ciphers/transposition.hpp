@@ -37,7 +37,7 @@ class Transposition : public Cipher {
   }
 
   inline WideString truncate(WideString text) {
-    for (int i = maxpadstr_.size(); i > 0; i--) {
+    for (int i = std::min(maxpadstr_.size(), text.size()); i > 0; i--) {
       if (text.substr(text.size() - i) == maxpadstr_.substr(0, i)) {
         return text.substr(0, text.size() - i);
       }
