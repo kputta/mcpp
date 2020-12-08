@@ -12,7 +12,8 @@ TranspositionHacker::TranspositionHacker(Dictionary d) {
   load_words_um(d, words_by_length_);
 }
 
-Transposition::TranspositionKey TranspositionHacker::hack(std::string_view ciphertext) {
+Transposition::TranspositionKey TranspositionHacker::hack(
+    std::string_view ciphertext) {
   int mxn = ciphertext.size();
   std::string pad = " ";
   Transposition::TranspositionKey key{std::make_pair(1, pad)};
