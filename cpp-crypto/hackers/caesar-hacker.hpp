@@ -42,7 +42,7 @@ class CaesarHacker : public Hacker<Caesar::CaesarKey> {
   }
 
   /*
-    vector O(N), map O(log N), unordered_map O(1)
+    vector O(N), ordered_set O(log N), unordered_set O(1)
     complexity ignores constant factors and different containers
     have various traversal overheads.
     contiguous memory, hash function

@@ -5,7 +5,8 @@
 
 #include "utils/loader.hpp"
 
-#define USE_VECTOR 2
+// branching based on istype
+#define USE_VECTOR 3
 
 namespace crypto {
 
