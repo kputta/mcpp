@@ -2,12 +2,14 @@
 
 #include <iostream>
 #include <string>
+#include <sstream>
 
 namespace crypto {
 class Cipher {
  public:
   using WideChar = char32_t;
   using WideString = std::basic_string<WideChar>;
+  using WideStringStream = std::basic_stringstream<WideChar>;
 
   Cipher() {}
   virtual ~Cipher(){};

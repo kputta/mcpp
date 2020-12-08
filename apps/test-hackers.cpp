@@ -19,9 +19,9 @@ void try_caesar(std::string_view text, int key) {
   auto start = std::chrono::system_clock::now();
   int key1 = hacker1.hack(ciphertext);
   auto end = std::chrono::system_clock::now();
-  auto elapsed = std::chrono::duration_cast<std::chrono::seconds>(end - start);
+  auto elapsed = std::chrono::duration_cast<std::chrono::milliseconds>(end - start);
 
-  std::cout << elapsed.count() << '\n';
+  std::cout << "time: " << elapsed.count() << '\n';
   if (key1 >= 0) {
     std::cout << "Probable key for ceasar cipher is " << key1 << "\n";
   }
@@ -30,8 +30,8 @@ void try_caesar(std::string_view text, int key) {
   start = std::chrono::system_clock::now();
   int key2 = hacker2.hack(ciphertext);
   end = std::chrono::system_clock::now();
-  elapsed = std::chrono::duration_cast<std::chrono::seconds>(end - start);
-  std::cout << elapsed.count() << '\n';
+  elapsed = std::chrono::duration_cast<std::chrono::milliseconds>(end - start);
+  std::cout << "time: " << elapsed.count() << '\n';
   if (key2 >= 0) {
     std::cout << "Probable key for ceasar cipher is " << key2 << "\n";
   }
