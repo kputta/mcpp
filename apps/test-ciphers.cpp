@@ -67,11 +67,13 @@ void test_caesar(std::string_view text, bool verbose, int key) {
   }
 }
 
-void test_transposition(std::string_view text, bool verbose, std::string key_pair) {
+void test_transposition(std::string_view text, bool verbose,
+                        std::string key_pair) {
   auto index = key_pair.find(":");
-  crypto::Transposition::TranspositionKey key{std::make_pair(std::stoi(key_pair.substr(0, key_pair.size() - index)),
-                                                             key_pair.substr(index+1, std::string::npos))};
- 
+  crypto::Transposition::TranspositionKey key{
+      std::make_pair(std::stoi(key_pair.substr(0, key_pair.size() - index)),
+                     key_pair.substr(index + 1, std::string::npos))};
+
   crypto::Transposition encrypt{key};
   crypto::Transposition decrypt{key};
 

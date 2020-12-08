@@ -19,7 +19,8 @@ void try_caesar(std::string_view text, int key) {
   auto start = std::chrono::system_clock::now();
   int key1 = hacker1.hack(ciphertext);
   auto end = std::chrono::system_clock::now();
-  auto elapsed = std::chrono::duration_cast<std::chrono::milliseconds>(end - start);
+  auto elapsed =
+      std::chrono::duration_cast<std::chrono::milliseconds>(end - start);
 
   std::cout << "time: " << elapsed.count() << '\n';
   if (key1 >= 0) {

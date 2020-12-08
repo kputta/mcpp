@@ -7,7 +7,7 @@ std::string Transposition::encrypt(std::string_view plaintext) {
 
   int pad_len = num_cols * key_.first - plaintext32.size();
   plaintext32.append(maxpadstr_.substr(0, pad_len));
-  
+
   return code_convertor_.to_bytes(transpose(plaintext32, key_.first, num_cols));
 }
 
@@ -19,6 +19,5 @@ std::string Transposition::decrypt(std::string_view ciphertext) {
 
   return code_convertor_.to_bytes(ciphertext32);
 }
-
 
 }  // namespace crypto
